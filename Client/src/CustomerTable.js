@@ -27,18 +27,18 @@ const CustomerTable = () => {
   };
 
   return (
-    <div className='bg-slate-700 min-h-screen flex items-center justify-center p-8'>
+    <div className='bg-emerald-600 min-h-screen flex items-center justify-center p-4'>
       <div className='w-full max-w-4xl bg-white rounded-lg shadow-lg p-6'>
         <input 
           type="text" 
           placeholder="Filter by customer name" 
           onChange={(e) => filterCustomers(e.target.value)} 
-          className="mb-6 p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="mb-6 p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-emerald-500"
         />
         <div className='overflow-x-auto'>
           <table className='w-full table-auto text-center'>
             <thead>
-              <tr className='bg-indigo-200 text-gray-700 uppercase text-sm leading-normal'>
+              <tr className='bg-emerald-200 text-gray-700 uppercase text-sm leading-normal'>
                 <th className='py-3 px-6'>Customer Id</th>
                 <th className='py-3 px-6'>Customer Name</th>
                 <th className='py-3 px-6'>Transaction Amount</th>
@@ -50,14 +50,14 @@ const CustomerTable = () => {
                 filteredCustomers.map(customer => (
                   transactions.filter(transaction => transaction.customer_id === customer.id).map(transaction => (
                     <tr 
-                      className='border-b border-gray-200 hover:bg-indigo-100 hover:text-indigo-900 cursor-pointer transition duration-200' 
+                      className='border-b border-gray-200 hover:bg-emerald-100 hover:text-emerald-900 cursor-pointer transition duration-200' 
                       key={`${customer.id}-${transaction.id}`} 
                       onClick={() => handleCustomerSelect(customer.id)}
                     >
-                      <td className='py-3 px-6 hover:bg-indigo-50 transition duration-200'>{customer.id}</td>
-                      <td className='py-3 px-6 hover:bg-indigo-50 transition duration-200'>{customer.name}</td>
-                      <td className='py-3 px-6 hover:bg-indigo-50 transition duration-200'>{transaction.amount}</td>
-                      <td className='py-3 px-6 hover:bg-indigo-50 transition duration-200'>{transaction.date}</td>
+                      <td className='py-3 px-6 hover:bg-emerald-50 transition duration-200'>{customer.id}</td>
+                      <td className='py-3 px-6 hover:bg-emerald-50 transition duration-200'>{customer.name}</td>
+                      <td className='py-3 px-6 hover:bg-emerald-50 transition duration-200'>{transaction.amount}</td>
+                      <td className='py-3 px-6 hover:bg-emerald-50 transition duration-200'>{transaction.date}</td>
                     </tr>
                   ))
                 ))
@@ -70,7 +70,7 @@ const CustomerTable = () => {
           </table>
         </div>
         {selectedCustomerId && (
-          <div className='mt-8'>
+          <div className='mt-8 flex justify-center'>
             <TransactionGraph customerId={selectedCustomerId} transactions={transactions} />
           </div>
         )}
